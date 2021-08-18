@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 
 namespace TucDemo.Pages
 {
@@ -19,7 +20,37 @@ namespace TucDemo.Pages
 
         public void OnGet()
         {
-
+            DayOfWeekInSwedish =
+                ConvertDayOfWeekToSwedish(DateTime.Now.DayOfWeek);
         }
+
+        public string ConvertDayOfWeekToSwedish(DayOfWeek day)
+        {
+            switch (day)
+            {
+                case DayOfWeek.Monday:
+                    return "Måndag";
+                case DayOfWeek.Tuesday:
+                    return "Tisdag";
+                case DayOfWeek.Wednesday:
+                    return "Onsdag";
+                case DayOfWeek.Thursday:
+                    return "Torsdag";
+                case DayOfWeek.Friday:
+                    return "Fredag";
+                case DayOfWeek.Saturday:
+                    return "Lördag";
+                case DayOfWeek.Sunday:
+                    return "Sunday";
+
+                default:
+                    return "Unknown";
+            }
+        }
+
+
+        
+        
+        public string DayOfWeekInSwedish { get; set; }
     }
 }
